@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
 
-    ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
@@ -24,4 +24,5 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getProductsByCategory(Category category) {
         return productRepository.findProductsByCategory(category);
     }
+
 }

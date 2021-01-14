@@ -6,7 +6,8 @@ import com.youngculture.webshop_onboarding.service.UserService;
 
 public class UserServiceImpl implements UserService {
 
-    UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final String secretKey = "secretKey";
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -15,11 +16,21 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(User user) {
         String pwd = user.getPassword();
-        final String secretKey = "secretKey";
         String encryptPwd = EncryptDecrypt.encrypt(pwd, secretKey);
         user.setPassword(encryptPwd);
 
         userRepository.saveUser(user);
+    }
+
+    @Override
+    public boolean validate(String email, String password) {
+        User user = userRepository.findUserByEmail(email);
+        if (user != null && user.getPassword()
+                .equals(EncryptDecrypt.encrypt(password, secretKey))) {
+            return true;
+        }
+
+        return false;
     }
 
 }

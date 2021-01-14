@@ -8,10 +8,12 @@ import org.hibernate.Transaction;
 
 public class UserRepositoryImpl implements UserRepository {
 
+    private static Session session = HibernateUtil.getSessionFactory().openSession();
+
     @Override
     public void saveUser(User user) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
             transaction = session.beginTransaction();
             session.save(user);
             transaction.commit();
@@ -21,6 +23,20 @@ public class UserRepositoryImpl implements UserRepository {
             }
             ex.printStackTrace();
         }
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        User user = null;
+        try {
+            user = (User) session
+                    .createQuery("FROM User U WHERE U.email = :email")
+                    .setParameter("email", email)
+                    .uniqueResult();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return user;
     }
 
 }

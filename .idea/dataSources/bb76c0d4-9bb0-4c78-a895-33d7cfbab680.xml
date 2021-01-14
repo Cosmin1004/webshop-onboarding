@@ -789,7 +789,7 @@ false Zulu
     <database id="2" parent="1" name="WebShop">
       <ObjectId>24629</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>616</IntrospectionStateNumber>
+      <IntrospectionStateNumber>622</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|24850|24852|1
 sequence|table|24858|24860|1
@@ -869,7 +869,7 @@ UC/10
 </Acl>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>617</IntrospectionStateNumber>
+      <IntrospectionStateNumber>623</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="18" parent="2" name="plpgsql">
