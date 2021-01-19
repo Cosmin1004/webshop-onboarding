@@ -23,14 +23,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean validate(String email, String password) {
+    public User getUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
+    }
+
+    @Override
+    public User validate(String email, String password) {
         User user = userRepository.findUserByEmail(email);
         if (user != null && user.getPassword()
                 .equals(EncryptDecrypt.encrypt(password, secretKey))) {
-            return true;
+            return user;
         }
-
-        return false;
+        return null;
     }
 
 }

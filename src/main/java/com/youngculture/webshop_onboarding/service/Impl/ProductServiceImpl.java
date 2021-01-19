@@ -1,6 +1,5 @@
 package com.youngculture.webshop_onboarding.service.Impl;
 
-import com.youngculture.webshop_onboarding.model.Category;
 import com.youngculture.webshop_onboarding.model.Product;
 import com.youngculture.webshop_onboarding.repository.ProductRepository;
 import com.youngculture.webshop_onboarding.service.ProductService;
@@ -21,8 +20,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getProductsByCategory(Category category) {
+    public List<Product> getProductsByCategory(String category) {
         return productRepository.findProductsByCategory(category);
+    }
+
+    @Override
+    public Product getProductByName(String name) {
+        return productRepository.findProductByName(name);
     }
 
 }

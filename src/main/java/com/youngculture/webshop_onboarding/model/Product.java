@@ -1,6 +1,7 @@
 package com.youngculture.webshop_onboarding.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -15,6 +16,9 @@ public class Product {
 
     @ManyToOne
     private Category category;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Order> orders;
 
     private String description;
 
@@ -58,5 +62,13 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

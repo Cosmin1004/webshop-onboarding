@@ -3,6 +3,7 @@ package com.youngculture.webshop_onboarding.repository.impl;
 import com.youngculture.webshop_onboarding.model.User;
 import com.youngculture.webshop_onboarding.repository.UserRepository;
 import com.youngculture.webshop_onboarding.util.HibernateUtil;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -17,7 +18,7 @@ public class UserRepositoryImpl implements UserRepository {
             transaction = session.beginTransaction();
             session.save(user);
             transaction.commit();
-        } catch (Exception ex) {
+        } catch (HibernateException ex) {
             if (transaction != null) {
                 transaction.rollback();
             }
@@ -33,7 +34,7 @@ public class UserRepositoryImpl implements UserRepository {
                     .createQuery("FROM User U WHERE U.email = :email")
                     .setParameter("email", email)
                     .uniqueResult();
-        } catch (Exception ex) {
+        } catch (HibernateException ex) {
             ex.printStackTrace();
         }
         return user;

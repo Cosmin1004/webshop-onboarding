@@ -5,7 +5,7 @@
     <session-factory>
 
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/WebShop</property>
 
         <property name="hibernate.connection.username">postgres</property>
@@ -17,6 +17,7 @@
         <mapping class="com.youngculture.webshop_onboarding.model.User"/>
         <mapping class="com.youngculture.webshop_onboarding.model.Category"/>
         <mapping class="com.youngculture.webshop_onboarding.model.Product"/>
+        <mapping class="com.youngculture.webshop_onboarding.model.Order"/>
 
     </session-factory>
 </hibernate-configuration>

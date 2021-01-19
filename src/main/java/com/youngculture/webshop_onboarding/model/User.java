@@ -1,6 +1,7 @@
 package com.youngculture.webshop_onboarding.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -21,6 +22,9 @@ public class User {
 
     @Column
     private String lastName;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Order> orders;
 
     public Long getId() {
         return id;
@@ -60,5 +64,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

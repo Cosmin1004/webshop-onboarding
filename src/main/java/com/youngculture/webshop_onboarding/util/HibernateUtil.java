@@ -1,5 +1,6 @@
 package com.youngculture.webshop_onboarding.util;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -10,14 +11,27 @@ public class HibernateUtil {
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
-            Configuration configuration = new Configuration().configure();
-            ServiceRegistry serviceRegistry
-                    = new StandardServiceRegistryBuilder()
-                    .applySettings(configuration.getProperties()).build();
+            try {
+                Configuration configuration = new Configuration().configure();
+                ServiceRegistry serviceRegistry
+                        = new StandardServiceRegistryBuilder()
+                        .applySettings(configuration.getProperties()).build();
 
-            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+                sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+            } catch (HibernateException ex) {
+                throw new ExceptionInInitializerError(ex);
+            }
         }
-
         return sessionFactory;
+    }
+
+    public static void closeFactory() {
+        if (sessionFactory != null) {
+            try {
+                sessionFactory.close();
+            } catch (HibernateException ex) {
+                throw new ExceptionInInitializerError(ex);
+            }
+        }
     }
 }

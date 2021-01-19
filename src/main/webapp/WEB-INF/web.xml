@@ -4,8 +4,48 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <welcome-file-list>
-        <welcome-file>/index.jsp</welcome-file>
-    </welcome-file-list>
+    <filter>
+        <filter-name>UserFilter</filter-name>
+        <filter-class>com.youngculture.webshop_onboarding.controller.filter.UserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>UserFilter</filter-name>
+        <servlet-name>user</servlet-name>
+    </filter-mapping>
 
+    <servlet>
+        <servlet-name>product</servlet-name>
+        <servlet-class>com.youngculture.webshop_onboarding.controller.ProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>product</servlet-name>
+        <url-pattern>/product</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>user</servlet-name>
+        <servlet-class>com.youngculture.webshop_onboarding.controller.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>user</servlet-name>
+        <url-pattern>/user</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>order</servlet-name>
+        <servlet-class>com.youngculture.webshop_onboarding.controller.OrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>order</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>cart</servlet-name>
+        <servlet-class>com.youngculture.webshop_onboarding.controller.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cart</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
 </web-app>
