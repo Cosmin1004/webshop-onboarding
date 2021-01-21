@@ -1,0 +1,13 @@
+#modalDialog{
+    overflow-y: initial !important
+}
+#modalBody{
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+#status {
+    margin-left: 5px;
+    color: #005cbf;
+    font-weight: bold;
+}
