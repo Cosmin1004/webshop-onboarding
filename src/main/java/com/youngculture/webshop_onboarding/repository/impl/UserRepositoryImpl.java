@@ -9,10 +9,26 @@ import org.hibernate.Transaction;
 
 public class UserRepositoryImpl implements UserRepository {
 
-    private static Session session = HibernateUtil.getSessionFactory().openSession();
+    @Override
+    public User findUserByEmail(String email) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        User user = null;
+        try {
+            user = (User) session
+                    .createQuery("FROM User U WHERE U.email = :email")
+                    .setParameter("email", email)
+                    .uniqueResult();
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return user;
+    }
 
     @Override
     public void saveUser(User user) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
@@ -23,21 +39,8 @@ public class UserRepositoryImpl implements UserRepository {
                 transaction.rollback();
             }
             ex.printStackTrace();
+        } finally {
+            session.close();
         }
     }
-
-    @Override
-    public User findUserByEmail(String email) {
-        User user = null;
-        try {
-            user = (User) session
-                    .createQuery("FROM User U WHERE U.email = :email")
-                    .setParameter("email", email)
-                    .uniqueResult();
-        } catch (HibernateException ex) {
-            ex.printStackTrace();
-        }
-        return user;
-    }
-
 }

@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(User user) {
         String pwd = user.getPassword();
-        String encryptPwd = EncryptDecrypt.encrypt(pwd, secretKey);
+        String encryptPwd = EncryptPassword.encrypt(pwd, secretKey);
         user.setPassword(encryptPwd);
 
         userRepository.saveUser(user);
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     public User validate(String email, String password) {
         User user = userRepository.findUserByEmail(email);
         if (user != null && user.getPassword()
-                .equals(EncryptDecrypt.encrypt(password, secretKey))) {
+                .equals(EncryptPassword.encrypt(password, secretKey))) {
             return user;
         }
         return null;

@@ -20,13 +20,16 @@
     <style> <%@include file="/resources/css/login.css"%> </style>
     <style> <%@include file="/resources/css/footer.css"%> </style>
     <style> <%@include file="/resources/css/cart.css"%> </style>
+    <style> <%@include file="/resources/css/myOrders.css"%> </style>
+</head>
 
-<body onload="showErrorDialog(); showCart();">
+<body onload="showErrorDialog(); showCartOrMyOrders();">
 
 <jsp:include page="header.jsp"/>
 
 <div id="wrapper">
     <div class="container" style="padding-bottom: 100px;">
+        <div class="success-msg" id="orderSuccess" hidden></div>
         <c:if test="${fn:length(products) == 0}">
             <img class="image" alt="No product found..."
                  src="resources/images/noProducts.png">
@@ -34,9 +37,22 @@
         <c:if test="${fn:length(products) > 0}">
             <div class="table-responsive">
                 <table class="table table-hover table-sm table-striped">
+                    <c:choose>
+                        <c:when test="${rendered == true}">
+                            <col width='20%'>
+                            <col width='10%'>
+                            <col width='55%'>
+                            <col width='15%'>
+                        </c:when>
+                        <c:otherwise>
+                            <col width='25%'>
+                            <col width='60%'>
+                            <col width='15%'>
+                        </c:otherwise>
+                    </c:choose>
                     <thead class="thead">
                     <tr>
-                        <th scope="col">Name</th>
+                        <th scope="col">Product</th>
                         <c:if test="${rendered == true}">
                             <th scope="col">Category</th>
                         </c:if>
@@ -51,17 +67,20 @@
                                 <td><yc:formatCategory category="${product.category.name}"/></td>
                             </c:if>
                             <td>${product.description}</td>
-                            <td style="color: red; width: 100px;">${product.price} Lei</td>
-                            <td>
-                                <form class="center"
-                                      action="${pageContext.request.contextPath}/order"
-                                      method="post">
-                                    <button name="addProduct" value="${product.name}" type="submit"
-                                            class="btn btn-success">
-                                        <img src="resources/images/addToCart.png" title="Add to cart" width="25px"
-                                             height="25px">
-                                    </button>
-                                </form>
+                            <td style="color: red">${product.price} Lei
+                                <div style="float: right">
+                                    <form method="post" action="${pageContext.request.contextPath}/order">
+                                        <button type="submit" value="${product.name}" name="productName"
+                                                class="btn btn-success" id="addProductToCart"
+                                                onclick="function afterAddToCart(name) {
+                                                        alert('Product ' + name + ' has been added to your cart!');
+                                                        }
+                                                        afterAddToCart('${product.name}')">
+                                            <img src="resources/images/addToCart.png" title="Add to cart" width="25px"
+                                                 height="25px">
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     </c:forEach>

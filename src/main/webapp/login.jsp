@@ -4,12 +4,14 @@
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
+                        <button type="button" class="close" id="closeLoginModal">
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>
                         <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#login-form"> Login <span class="glyphicon glyphicon-user"></span></a></li>
-                            <li><a data-toggle="tab" href="#registration-form"> Register <span class="glyphicon glyphicon-pencil"></span></a></li>
+                            <li class="active"><a data-toggle="tab" href="#login-form"> Login <span
+                                    class="glyphicon glyphicon-user"></span></a></li>
+                            <li><a data-toggle="tab" href="#registration-form"> Register <span
+                                    class="glyphicon glyphicon-pencil"></span></a></li>
                         </ul>
                     </div>
                     <div class="modal-body">

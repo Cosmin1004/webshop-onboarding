@@ -978,6 +978,7 @@ UC/10
     </sequence>
     <sequence id="31" parent="17" name="orders_id_seq">
       <ObjectId>25073</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>825</StateNumber>
       <DataType>bigint|0s</DataType>
@@ -1014,6 +1015,7 @@ UC/10
     </table>
     <table id="37" parent="17" name="users">
       <ObjectId>25094</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>832</StateNumber>
     </table>

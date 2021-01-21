@@ -4,8 +4,8 @@ import com.youngculture.webshop_onboarding.model.User;
 
 public interface UserRepository {
 
-    void saveUser(User user);
-
     User findUserByEmail(String email);
+
+    void saveUser(User user);
 
 }

@@ -2,18 +2,25 @@ package com.youngculture.webshop_onboarding.repository;
 
 import com.youngculture.webshop_onboarding.model.Order;
 import com.youngculture.webshop_onboarding.model.Product;
+import com.youngculture.webshop_onboarding.model.Status;
 import com.youngculture.webshop_onboarding.model.User;
 
-import javax.transaction.Status;
+import java.util.List;
 
 public interface OrderRepository {
+
+    Order findOrderByUserAndProduct(User user, Product product);
+
+    List<Order> findOrdersByUserAndStatus(User user);
 
     void saveOrder(Order order);
 
     void updateOrderQuantity(Order order);
 
-    void updateOrderStatus(Order order, Status status);
+    void updateOrderStatus(User user, Status currentStatus, Status newStatus);
 
-    Order findOrderByUserAndProduct(User user, Product product);
+    void updateOrderReference(User user, Long reference);
+
+    void deleteOrder(User user, Product product);
 
 }

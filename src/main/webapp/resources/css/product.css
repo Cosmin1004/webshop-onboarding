@@ -27,6 +27,11 @@ body {
     font-style: italic;
 }
 
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
 #wrapper {
     min-height: 100%;
     position: relative;
@@ -39,4 +44,14 @@ body {
     margin-right: auto;
     width: 800px;
     height: 400px;
+}
+
+.success-msg {
+    color: #270;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-size: large;
+    font-weight: bold;
 }

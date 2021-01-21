@@ -29,6 +29,9 @@ public class Order {
     @Column
     private Status status;
 
+    @Column
+    private Long reference;
+
     public Long getId() {
         return id;
     }
@@ -67,5 +70,13 @@ public class Order {
 
     public Product getProduct() {
         return product;
+    }
+
+    public Long getReference() {
+        return reference;
+    }
+
+    public void setReference(Long reference) {
+        this.reference = reference;
     }
 }

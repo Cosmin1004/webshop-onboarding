@@ -3,11 +3,12 @@
 <%@ taglib uri="WEB-INF/category.tld" prefix="yc" %>
 
 
-<img class="center" style="margin-bottom: 5px; margin-top: 5px"
-     src="resources/images/youngCulture.jpg" alt="YoungCulture"/>
+<a href="${pageContext.request.contextPath}"><img class="center" style="margin-bottom: 5px; margin-top: 5px"
+                                                  src="resources/images/youngCulture.jpg" alt="YoungCulture"/></a>
 
 <jsp:include page="login.jsp"/>
 <jsp:include page="cart.jsp"/>
+<jsp:include page="myOrders.jsp"/>
 
 <nav class="navbar navbar-inverse">
     <div>
@@ -29,12 +30,23 @@
             <form action="${pageContext.request.contextPath}/cart" method="get">
                 <button type="submit" class="btn btn-default active"
                         style="margin-right: 5px; float: right">
-                    <img src="resources/images/cart.png" title="View your orders" width="25px" height="25px">
+                    <img src="resources/images/cart.png" title="View the cart" width="25px" height="25px">
                 </button>
                 <c:if test="${cartRendered == true}">
                     <div hidden id="hiddenCart"></div>
                 </c:if>
             </form>
+            <c:if test="${currentSessionUser != null}">
+                <form action="${pageContext.request.contextPath}/order" method="get">
+                    <button type="submit" class="btn btn-default active"
+                            style="margin-right: 5px; float: right">
+                        <img src="resources/images/myOrders.png" title="View your orders" width="25px" height="25px">
+                        <c:if test="${myOrdersRendered == true}">
+                            <div hidden id="hiddenMyOrders"></div>
+                        </c:if>
+                    </button>
+                </form>
+            </c:if>
         </div>
         <span id="userSpan">
                 <c:choose>

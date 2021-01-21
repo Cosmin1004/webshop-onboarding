@@ -24,14 +24,4 @@ public class HibernateUtil {
         }
         return sessionFactory;
     }
-
-    public static void closeFactory() {
-        if (sessionFactory != null) {
-            try {
-                sessionFactory.close();
-            } catch (HibernateException ex) {
-                throw new ExceptionInInitializerError(ex);
-            }
-        }
-    }
 }

@@ -10,10 +10,9 @@ import java.util.List;
 
 public class CategoryRepositoryImpl implements CategoryRepository {
 
-    private static Session session = HibernateUtil.getSessionFactory().openSession();
-
     @Override
     public List<Category> findAllCategories() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
         List<Category> categories = null;
         try {
             categories = session
@@ -21,6 +20,8 @@ public class CategoryRepositoryImpl implements CategoryRepository {
                     .list();
         } catch (HibernateException ex) {
             ex.printStackTrace();
+        } finally {
+            session.close();
         }
         return categories;
 

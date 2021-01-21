@@ -34,7 +34,7 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     public void init() {
-        //load some information for startup
+        //load information for startup (categories & all products)
         categories = categoryService.getAllCategoryNames();
         products = productService.getAllProducts();
         getServletContext().setAttribute("rendered", true);

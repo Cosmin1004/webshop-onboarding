@@ -27,7 +27,7 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //filters in UserFilter
+        //there are some filters (both for Login and Register) in UserFilter
         if (request.getParameter("login") != null) {
             User user = userService.getUserByEmail(request.getParameter("email"));
             setUserSession(request, user);
