@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="WEB-INF/category.tld" prefix="yc" %>
@@ -14,7 +14,7 @@
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script src="resources/js/yc.js" type="text/javascript"></script>
+    <script src="resources/js/script.js" type="text/javascript"></script>
 
     <style> <%@include file="/resources/css/product.css"%> </style>
     <style> <%@include file="/resources/css/login.css"%> </style>
@@ -87,6 +87,9 @@
                 </table>
             </div>
         </c:if>
+        <a id="backToTop" href="#" class="btn btn-primary btn-lg back-to-top" role="button"
+           title="Click to return on the top of the page" data-toggle="tooltip" data-placement="left">
+            <span id="backToToSpan" class="glyphicon glyphicon-chevron-up"></span></a>
     </div>
     <jsp:include page="/footer.jsp"/>
 </div>

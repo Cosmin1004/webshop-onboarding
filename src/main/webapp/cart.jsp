@@ -1,8 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
-<script src="resources/js/yc.js" type="text/javascript"></script>
 
 <div class="container">
     <div class="modal" id="cartModal">

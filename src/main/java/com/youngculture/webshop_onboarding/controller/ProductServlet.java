@@ -21,6 +21,7 @@ public class ProductServlet extends HttpServlet {
     private List<String> categories = new ArrayList<>();
     private List<Product> products = new ArrayList<>();
     private boolean categoryRendered = true;
+    private int numberOfProducts;
 
     private ProductService productService;
     private CategoryService categoryService;
@@ -37,9 +38,11 @@ public class ProductServlet extends HttpServlet {
         //load information for startup (categories & all products)
         categories = categoryService.getAllCategoryNames();
         products = productService.getAllProducts();
+        numberOfProducts = products.size();
         getServletContext().setAttribute("rendered", true);
         getServletContext().setAttribute("categories", categories);
         getServletContext().setAttribute("products", products);
+        getServletContext().setAttribute("numberOfProducts", numberOfProducts);
     }
 
     //load products

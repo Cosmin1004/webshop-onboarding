@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="WEB-INF/category.tld" prefix="yc" %>
 
@@ -6,6 +5,7 @@
 <a href="${pageContext.request.contextPath}"><img class="center" style="margin-bottom: 5px; margin-top: 5px"
                                                   src="resources/images/youngCulture.jpg" alt="YoungCulture"/></a>
 
+<!-- include modals -->
 <jsp:include page="login.jsp"/>
 <jsp:include page="cart.jsp"/>
 <jsp:include page="myOrders.jsp"/>
@@ -16,7 +16,7 @@
             <form action="${pageContext.request.contextPath}/product" method="get">
                 <button type="submit" class="btn btn-default" name="category"
                         value="all">
-                    <img src="resources/images/all.png" title="All products" width="20px" height="20px">
+                    <img src="resources/images/all.png" title="All products (${numberOfProducts})" width="20px" height="20px">
                 </button>
                 <div class="btn-group" role="group">
                     <c:forEach var="category" items="${categories}">

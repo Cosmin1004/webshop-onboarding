@@ -1,8 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
-<script src="resources/js/yc.js" type="text/javascript"></script>
 
 <div class="container">
     <div class="modal" id="myOrdersModal">
@@ -13,21 +10,23 @@
                     <h1 style="margin-top: 5px; margin-bottom: 5px" class="center">My orders</h1>
                 </div>
                 <div class="modal-body">
-                    <c:forEach items="${ordersSent}" var="ordersSentMap">
-                        <c:choose>
-                            <c:when test="${ordersSent == null}">
-                                <div>No orders sent...</div>
-                            </c:when>
-                            <c:otherwise>
-                                <h2>Order reference: ${ordersSentMap.key}</h2>
+                    <c:choose>
+                        <c:when test="${ordersSent.size() == 0}">
+                            <h3>No orders sent...</h3>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach items="${ordersSent}" var="ordersSentMap">
+                                <h3>Order reference: ${ordersSentMap.key}</h3>
                                 <c:set var="orderStatus" value="${ordersSentMap.value[0].status}"/>
                                 <table class="table table-striped">
-                                    <col width='70%'>
-                                    <col width='30%'>
+                                    <col width='60%'>
+                                    <col width='20%'>
+                                    <col width='20%'>
                                     <thead class="thead">
                                     <tr>
                                         <th>Product</th>
                                         <th>Quantity</th>
+                                        <th>Price</th>
                                     </tr>
                                     </thead>
                                     <c:set var="totalPrice" value="0"/>
@@ -37,15 +36,16 @@
                                         <tr>
                                             <td>${ordersSent.product.name}</td>
                                             <td>${ordersSent.quantity}</td>
+                                            <td>${ordersSent.product.price}</td>
                                         </tr>
                                     </c:forEach>
                                 </table>
                                 <h4 id="totalPrice">Total price: ${totalPrice} Lei</h4>
-                            </c:otherwise>
-                        </c:choose>
-                        <h4 style="float: right" id="status">Status: ${orderStatus}</h4>
-                        <br><br>
-                    </c:forEach>
+                                <h4 style="float: right" id="status">Status: ${orderStatus}</h4>
+                                <br><br><hr>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
