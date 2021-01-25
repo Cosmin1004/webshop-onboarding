@@ -69,8 +69,7 @@ function showErrorDialog() {
 }
 
 /*$(document).on("click","#addProductToCart",function(){
-    $.post("order",
-        {
+    $.post("order", {
             productName: $(this).val(),
         },
         function(responseText) {

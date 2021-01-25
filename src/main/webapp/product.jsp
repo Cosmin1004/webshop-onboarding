@@ -8,6 +8,7 @@
 <head>
     <title>young.culture</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="resources/images/y.png" />
 
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -73,7 +74,7 @@
                                         <button type="submit" value="${product.name}" name="productName"
                                                 class="btn btn-success" id="addProductToCart"
                                                 onclick="function afterAddToCart(name) {
-                                                        alert('Product ' + name + ' has been added to your cart!');
+                                                            alert('Product ' + name + ' has been added to your cart!');
                                                         }
                                                         afterAddToCart('${product.name}')">
                                             <img src="resources/images/addToCart.png" title="Add to cart" width="25px"
