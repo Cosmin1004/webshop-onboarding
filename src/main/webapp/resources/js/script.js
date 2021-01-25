@@ -1,3 +1,4 @@
+//send orders
 $(document).on("click", "#send", function () {
     $.post("cart", function (responseText) {
         $('#cartModal').modal('hide');
@@ -10,9 +11,11 @@ $(document).on("click", "#send", function () {
             "padding", "10px");
         messageDiv.text(responseText);
         messageDiv.show().delay(3000).fadeOut();
+        getCartCount();
     });
 });
 
+//back top top button
 $(document).ready(function(){
     let backToTop = $('#backToTop');
     $(window).scroll(function () {
@@ -32,6 +35,17 @@ $(document).ready(function(){
     backToTop.tooltip('show');
 });
 
+//get number of items in cart
+function getCartCount() {
+    $(document).ready(function () {
+        $.get("cart-count", function (responseText) {
+            let count = $('#ordersCount');
+            count.text("(" + responseText + ")");
+        });
+    });
+}
+
+//modal methods
 function openLoginModal() {
     $('#loginModal').modal('show');
 }

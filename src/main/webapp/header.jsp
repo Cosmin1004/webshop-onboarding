@@ -31,6 +31,7 @@
                 <button type="submit" class="btn btn-default active"
                         style="margin-right: 5px; float: right">
                     <img src="resources/images/cart.png" title="View the cart" width="25px" height="25px">
+                    <span id="ordersCount"></span>
                 </button>
                 <c:if test="${cartRendered == true}">
                     <div hidden id="hiddenCart"></div>

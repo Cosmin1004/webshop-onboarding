@@ -36,7 +36,7 @@
                                         <tr>
                                             <td>${ordersSent.product.name}</td>
                                             <td>${ordersSent.quantity}</td>
-                                            <td>${ordersSent.product.price}</td>
+                                            <td style="color: red">${ordersSent.product.price} Lei</td>
                                         </tr>
                                     </c:forEach>
                                 </table>

@@ -13,3 +13,9 @@
     max-height: calc(100vh - 200px);
     overflow-y: auto;
 }
+
+#ordersCount {
+    font-style: italic;
+    font-weight: bold;
+    font-family: "Lucida Console", "Courier New", monospace;
+}

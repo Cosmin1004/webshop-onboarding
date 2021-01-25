@@ -23,7 +23,7 @@
     <style> <%@include file="/resources/css/myOrders.css"%> </style>
 </head>
 
-<body onload="showErrorDialog(); showCartOrMyOrders();">
+<body onload="getCartCount(); showErrorDialog(); showCartOrMyOrders();">
 
 <jsp:include page="header.jsp"/>
 

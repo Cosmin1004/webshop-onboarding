@@ -44,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Map<Long, List<Order>> getUserOrdersGroupedByReference(User user) {
-        Map<Long, List<Order>> ordersByReference = new HashMap<Long, List<Order>>();
+        Map<Long, List<Order>> ordersByReference = new HashMap<>();
         List<Order> orders = orderRepository.findOrdersByUserAndStatus(user);
         for (Order order : orders) {
             Long reference = order.getReference();
